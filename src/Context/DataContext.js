@@ -7,7 +7,7 @@ export default function DataProvider({ children }) {
     name: "",
     title: "",
     address: "",
-    age: "",
+    age: 0,
     experienceYears: "",
     salaryExpectation: 0,
     noticePeriod: "",

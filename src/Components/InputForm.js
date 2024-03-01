@@ -233,6 +233,36 @@ const InputForm = () => {
               </div>
             </AccordionContent>
           </AccordionItem>
+          <AccordionItem className="accordion" value="experience">
+            <AccordionTrigger>Experience</AccordionTrigger>
+            <AccordionContent className="flex flex-col gap-2">
+              {professionalExperiences.map((experience, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="flex gap-2 justify-between border p-2"
+                  >
+                    <div>
+                      <h3 className="font-bold">{experience.title}</h3>
+                      <h4>{experience.subtitle}</h4>
+                    </div>
+                    <div>
+                      <Button
+                        onClick={() => {
+                          const updatedExperinces =
+                            professionalExperiences.filter(
+                              (prev) => prev.id !== experience.id
+                            );
+                        }}
+                      >
+                        X
+                      </Button>
+                    </div>
+                  </div>
+                );
+              })}
+            </AccordionContent>
+          </AccordionItem>
         </Accordion>
       </form>
     </aside>

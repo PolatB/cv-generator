@@ -1,5 +1,7 @@
 import React, { useRef } from "react";
+import { Button } from "./Ui/button";
 import { useFormData } from "../Context/DataContext";
+import ReactToPrint from "react-to-print";
 
 const TemplatePreview = () => {
   const { formData } = useFormData();
@@ -35,11 +37,19 @@ const TemplatePreview = () => {
 
   return (
     <div className="relative bg-red-300 overflow-hidden">
+      <ReactToPrint
+        bodyClass="print-agreement"
+        content={() => ref.current}
+        trigger={() => (
+          <Button className={"absolute top-3 right-3"}>Print</Button>
+        )}
+      />
+
       <div
         ref={ref}
         id="resumePreview"
         format="a4"
-        className="font-poppins grid w-[210mm] h-[297mm] format grid-cols-[1fr-2fr] border border-gray-300  bg-white p-8 shadow-lg"
+        className="font-poppins grid w-[210mm] h-[297mm] format grid-cols-[1fr_2fr] border border-gray-300  bg-white p-8 shadow-lg"
       >
         <div className="mb-6 flex flex-col gap-2 border-r-[1px] border-black py-3 pr-7 text-center">
           <h1 className="customFont test text-[26pt] font-extrabold">
@@ -85,7 +95,7 @@ const TemplatePreview = () => {
             </div>
           )}
           {formData.personalityColor !== "" && (
-            <div className="black border-b p-[8pt]">
+            <div className="black border p-[8pt]">
               <h3 className="mb-2 font-bold uppercase text-[11pt]">
                 Personal Color
               </h3>
@@ -135,7 +145,7 @@ const TemplatePreview = () => {
           )}
           {formData.education.length > 0 && (
             <div>
-              <h3 className="border-d border-black pb-2 text-[13pt] font-bold uppercase">
+              <h3 className="border-b border-black pb-2 text-[13pt] font-bold uppercase">
                 Education
               </h3>
               <ul
